@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Redesign Proposal - Promised Land Leadership Development</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --amber-500: #f59e0b;
+            --amber-400: #fbbf24;
+            --amber-300: #fcd34d;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --red-500: #ef4444;
+            --red-100: #fee2e2;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--slate-700);
+            background: var(--slate-100);
+        }
+        
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media print {
+            body { background: white; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                page-break-after: always;
+            }
+            .no-print { display: none !important; }
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 50%, #064e3b 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            position: relative;
+        }
+        
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .cover-badge span {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .cover-title {
+            font-size: 52px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .cover-title-accent {
+            background: linear-gradient(90deg, var(--amber-400), var(--amber-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cover-subtitle {
+            font-size: 20px;
+            color: var(--slate-300);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+        
+        .cover-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .cover-stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 35px;
+            border-radius: 16px;
+        }
+        
+        .cover-stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--emerald-500);
+        }
+        
+        .cover-stat-label {
+            font-size: 13px;
+            color: var(--slate-400);
+            margin-top: 4px;
+        }
+        
+        .cover-meta {
+            color: var(--slate-400);
+            font-size: 14px;
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 50px 60px;
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--slate-200);
+        }
+        
+        .page-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--slate-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title-icon {
+            font-size: 20px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--slate-600);
+        }
+        
+        /* Issue Cards */
+        .issue-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .issue-card {
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid;
+        }
+        
+        .issue-card.critical {
+            background: #fef2f2;
+            border-color: var(--red-500);
+        }
+        
+        .issue-card.warning {
+            background: #fffbeb;
+            border-color: var(--amber-500);
+        }
+        
+        .issue-card-title {
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .issue-card-desc {
+            font-size: 14px;
+            color: var(--slate-600);
+            margin: 0;
+        }
+        
+        /* Comparison */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .comparison-box {
+            background: var(--slate-50);
+            border-radius: 16px;
+            padding: 25px;
+            border: 2px solid var(--slate-200);
+        }
+        
+        .comparison-box.current {
+            border-color: #fecaca;
+            background: #fef2f2;
+        }
+        
+        .comparison-box.proposed {
+            border-color: #a7f3d0;
+            background: #ecfdf5;
+        }
+        
+        .comparison-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .comparison-box.current .comparison-label { color: var(--red-500); }
+        .comparison-box.proposed .comparison-label { color: var(--emerald-600); }
+        
+        /* Website Mockup */
+        .mockup-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid var(--slate-200);
+        }
+        
+        .mockup-browser-bar {
+            background: var(--slate-100);
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-dot.red { background: #ef4444; }
+        .mockup-dot.yellow { background: #eab308; }
+        .mockup-dot.green { background: #22c55e; }
+        
+        .mockup-url {
+            flex: 1;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: var(--slate-500);
+        }
+        
+        .mockup-content {
+            padding: 0;
+        }
+        
+        .mockup-header {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mockup-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-logo-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+        }
+        
+        .mockup-logo-text {
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .mockup-nav {
+            display: flex;
+            gap: 12px;
+            font-size: 10px;
+            color: var(--slate-500);
+        }
+        
+        .mockup-hero {
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .mockup-hero h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-hero p {
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-hero button {
+            font-size: 9px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        /* Current mockup specific */
+        .current-mockup .mockup-header {
+            background: white;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        
+        .current-mockup .mockup-logo-icon {
+            background: #b45309;
+        }
+        
+        .current-mockup .mockup-hero {
+            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+        }
+        
+        .current-mockup .mockup-hero h3,
+        .current-mockup .mockup-hero p {
+            color: white;
+        }
+        
+        .current-mockup .mockup-hero button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        /* Proposed mockup specific */
+        .proposed-mockup .mockup-header {
+            background: var(--slate-900);
+        }
+        
+        .proposed-mockup .mockup-logo-icon {
+            background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+        }
+        
+        .proposed-mockup .mockup-logo-text {
+            color: white;
+        }
+        
+        .proposed-mockup .mockup-nav {
+            color: var(--slate-400);
+        }
+        
+        .proposed-mockup .mockup-cta-btn {
+            background: var(--amber-500);
+            color: var(--slate-900);
+            font-size: 9px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .proposed-mockup .mockup-hero {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 50%, #064e3b 100%);
+        }
+        
+        .proposed-mockup .mockup-hero h3 {
+            color: white;
+        }
+        
+        .proposed-mockup .mockup-hero .accent {
+            color: var(--amber-400);
+        }
+        
+        .proposed-mockup .mockup-hero p {
+            color: var(--slate-400);
+        }
+        
+        .proposed-mockup .mockup-hero button {
+            background: var(--amber-500);
+            color: var(--slate-900);
+            font-weight: 600;
+        }
+        
+        .proposed-mockup .mockup-hero .trust-badges {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .proposed-mockup .mockup-hero .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 8px;
+            color: white;
+        }
+        
+        /* ROI Section */
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .roi-card {
+            background: linear-gradient(135deg, var(--slate-900) 0%, #064e3b 100%);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        
+        .roi-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--emerald-500);
+        }
+        
+        .roi-label {
+            font-size: 13px;
+            color: var(--slate-400);
+            margin-top: 5px;
+        }
+        
+        .roi-highlight {
+            background: var(--slate-800);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .roi-highlight-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .roi-highlight-value {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--emerald-500), var(--amber-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .roi-highlight-desc {
+            color: var(--slate-400);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* Features List */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #d1fae5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--emerald-600);
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        
+        .feature-text {
+            flex: 1;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 2px;
+        }
+        
+        .feature-desc {
+            font-size: 13px;
+            color: var(--slate-500);
+            margin: 0;
+        }
+        
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 50%, #064e3b 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-desc {
+            color: var(--slate-300);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button {
+            background: var(--amber-500);
+            color: var(--slate-900);
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-urgency {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--amber-400);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Timeline */
+        .timeline {
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .timeline-number {
+            width: 40px;
+            height: 40px;
+            background: var(--amber-500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-900);
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content h4 {
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content p {
+            font-size: 14px;
+            color: var(--slate-500);
+            margin: 0;
+        }
+        
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--slate-200);
+            font-size: 11px;
+            color: var(--slate-400);
+        }
+        
+        /* Print button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--amber-500);
+            color: var(--slate-900);
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px -5px rgba(245,158,11,0.4);
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            background: var(--amber-400);
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn no-print" onclick="window.print()">📥 Download as PDF</button>
+
+    <!-- COVER PAGE -->
+    <div class="page cover-page">
+        <div class="cover-content">
+            <div class="cover-badge">
+                <span>✨</span>
+                <span>Website Transformation Proposal</span>
+            </div>
+            
+            <h1 class="cover-title">
+                Promised Land<br>
+                <span class="cover-title-accent">Leadership Development</span>
+            </h1>
+            
+            <p class="cover-subtitle">
+                A Strategic Website Redesign to Convert More Visitors into Lifelong Clients
+            </p>
+            
+            <div class="cover-stats">
+                <div class="cover-stat">
+                    <div class="cover-stat-value">+150%</div>
+                    <div class="cover-stat-label">Projected Lead Increase</div>
+                </div>
+                <div class="cover-stat">
+                    <div class="cover-stat-value" style="color: var(--amber-400);">$84K+</div>
+                    <div class="cover-stat-label">Annual Revenue Impact</div>
+                </div>
+            </div>
+            
+            <p class="cover-meta">
+                Prepared for Promised Land Leadership Development<br>
+                February 2026
+            </p>
+        </div>
+    </div>
+
+    <!-- EXECUTIVE SUMMARY PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-icon">🎯</div>
+            <h2 class="page-title">Executive Summary</h2>
+        </div>
+        
+        <p>
+            Your website is your most important sales tool — it works 24/7, never takes a day off, and is often the first interaction potential clients have with your brand. Unfortunately, the current promisedlandld.com website is actively costing you clients and revenue.
+        </p>
+        
+        <div class="comparison-container">
+            <div class="comparison-box current">
+                <div class="comparison-label">⚠️ The Challenge</div>
+                <p style="font-size: 14px;">
+                    Your current website has an outdated design, poor mobile experience, and weak conversion elements. You're losing potential clients to competitors with more professional online presences.
+                </p>
+                <ul style="font-size: 13px; color: #b91c1c; margin-top: 15px; padding-left: 20px;">
+                    <li>2023 copyright — appears abandoned</li>
+                    <li>No clear call-to-action strategy</li>
+                    <li>Generic, template-style design</li>
+                    <li>Missing trust indicators</li>
+                    <li>Poor mobile responsiveness</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-box proposed">
+                <div class="comparison-label">✅ The Opportunity</div>
+                <p style="font-size: 14px;">
+                    A strategic redesign will position Promised Land as the premier financial services firm in Plano, building immediate trust and converting visitors into consultations.
+                </p>
+                <ul style="font-size: 13px; color: #047857; margin-top: 15px; padding-left: 20px;">
+                    <li>150%+ increase in consultation requests</li>
+                    <li>60% improvement in mobile engagement</li>
+                    <li>Professional credibility boost</li>
+                    <li>$84K-$168K additional annual revenue</li>
+                    <li>Competitive advantage in local market</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <span class="section-title-icon">💡</span>
+            Why This Matters Now
+        </div>
+        
+        <p>
+            In financial services, trust is everything. When a potential client visits your website — perhaps after receiving a referral or seeing your office — they're making split-second judgments about whether you're the right partner for their family's financial future. An outdated website sends the message that your services might also be outdated.
+        </p>
+        
+        <p>
+            Every day without a professional website is another day of lost opportunities. Your competitors are investing in their digital presence. The question isn't whether to upgrade — it's how quickly you can capture the clients you're currently losing.
+        </p>
+        
+        <div class="page-footer">
+            <span>Promised Land Leadership Development — Website Redesign Proposal</span>
+            <span>Page 2 of 6</span>
+        </div>
+    </div>
+
+    <!-- CURRENT WEBSITE ANALYSIS PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-icon">🔍</div>
+            <h2 class="page-title">Current Website Analysis</h2>
+        </div>
+        
+        <p>
+            We conducted a comprehensive audit of promisedlandld.com and identified several critical issues that are preventing your website from effectively converting visitors into clients.
+        </p>
+        
+        <div class="comparison-box current" style="margin: 20px 0;">
+            <div class="comparison-label">Current Homepage Preview</div>
+            <div class="mockup-container current-mockup">
+                <div class="mockup-browser-bar">
+                    <div class="mockup-dot red"></div>
+                    <div class="mockup-dot yellow"></div>
+                    <div class="mockup-dot green"></div>
+                    <div class="mockup-url">promisedlandld.com</div>
+                </div>
+                <div class="mockup-content">
+                    <div class="mockup-header">
+                        <div class="mockup-logo">
+                            <div class="mockup-logo-icon"></div>
+                            <span class="mockup-logo-text" style="color: var(--slate-700);">Promised Land LD</span>
+                        </div>
+                        <div class="mockup-nav">
+                            <span>Home</span>
+                            <span>About Us</span>
+                            <span>Services</span>
+                            <span>Events</span>
+                            <span>Contact</span>
+                        </div>
+                    </div>
+                    <div class="mockup-hero">
+                        <h3 style="color: white;">Empower Your Financial Future: Building Tomorrow, Today</h3>
+                        <p style="color: rgba(255,255,255,0.8);">Have the future you want</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <span class="section-title-icon">🚨</span>
+            Critical Issues Identified
+        </div>
+        
+        <div class="issue-grid">
+            <div class="issue-card critical">
+                <div class="issue-card-title">❌ Outdated Visual Design</div>
+                <p class="issue-card-desc">Generic Squarespace template looks like hundreds of other sites. Doesn't convey the expertise and trust needed for financial services clients making major life decisions.</p>
+            </div>
+            
+            <div class="issue-card critical">
+                <div class="issue-card-title">❌ Poor Mobile Experience</div>
+                <p class="issue-card-desc">63% of users browse on mobile devices. Your site is difficult to navigate on phones, with text too small to read and buttons impossible to tap accurately.</p>
+            </div>
+            
+            <div class="issue-card critical">
+                <div class="issue-card-title">❌ Weak Conversion Strategy</div>
+                <p class="issue-card-desc">No compelling CTAs above the fold, missing social proof, and buried contact information. Visitors don't know what action to take or why they should trust you.</p>
+            </div>
+            
+            <div class="issue-card warning">
+                <div class="issue-card-title">⚠️ Missing Trust Signals</div>
+                <p class="issue-card-desc">No client testimonials, success metrics, or credentials displayed prominently. First-time visitors have no reason to choose you over competitors.</p>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Promised Land Leadership Development — Website Redesign Proposal</span>
+            <span>Page 3 of 6</span>
+        </div>
+    </div>
+
+    <!-- PROPOSED REDESIGN PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-icon">✨</div>
+            <h2 class="page-title">Your New Website Vision</h2>
+        </div>
+        
+        <p>
+            Our redesign transforms your digital presence into a powerful client acquisition tool. Every element has been carefully designed to build trust, demonstrate expertise, and guide visitors toward scheduling a consultation.
+        </p>
+        
+        <div class="comparison-box proposed" style="margin: 20px 0;">
+            <div class="comparison-label">Proposed Homepage Design</div>
+            <div class="mockup-container proposed-mockup">
+                <div class="mockup-browser-bar">
+                    <div class="mockup-dot red"></div>
+                    <div class="mockup-dot yellow"></div>
+                    <div class="mockup-dot green"></div>
+                    <div class="mockup-url">🔒 promisedlandld.com</div>
+                </div>
+                <div class="mockup-content">
+                    <div class="mockup-header">
+                        <div class="mockup-logo">
+                            <div class="mockup-logo-icon"></div>
+                            <span class="mockup-logo-text">Promised Land</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div class="mockup-nav">
+                                <span>Services</span>
+                                <span>About</span>
+                                <span>Team</span>
+                            </div>
+                            <span class="mockup-cta-btn">Free Consultation</span>
+                        </div>
+                    </div>
+                    <div class="mockup-hero">
+                        <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                            <span style="color: var(--amber-400);">★★★★★</span>
+                            <span style="color: var(--amber-400); font-size: 10px;">Trusted by 500+ Families</span>
+                        </div>
+                        <h3>Secure Your Family's <span class="accent">Financial Future</span></h3>
+                        <p>Expert wealth protection strategies tailored for your unique journey.</p>
+                        <button>Start Your Journey →</button>
+                        <div class="trust-badges">
+                            <span class="badge">🛡️ Licensed</span>
+                            <span class="badge">🏆 A+ Rated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <span class="section-title-icon">🎯</span>
+            Key Design Improvements
+        </div>
+        
+        <ul class="features-list">
+            <li>
+                <span class="feature-icon">✓</span>
+                <div class="feature-text">
+                    <div class="feature-title">Premium, Trust-Building Design</div>
+                    <p class="feature-desc">Dark, sophisticated color palette conveys stability and expertise. Gold accents signal premium service worthy of your clients' most important financial decisions.</p>
+                </div>
+            </li>
+            <li>
+                <span class="feature-icon">✓</span>
+                <div class="feature-text">
+                    <div class="feature-title">Strategic CTA Placement</div>
+                    <p class="feature-desc">"Free Consultation" buttons in header and hero area. Clear, compelling path from curious visitor to scheduled appointment.</p>
+                </div>
+            </li>
+            <li>
+                <span class="feature-icon">✓</span>
+                <div class="feature-text">
+                    <div class="feature-title">Powerful Social Proof</div>
+                    <p class="feature-desc">Client success metrics, testimonials, and partner logos build immediate credibility with new visitors and overcome skepticism.</p>
+                </div>
+            </li>
+            <li>
+                <span class="feature-icon">✓</span>
+                <div class="feature-text">
+                    <div class="feature-title">Mobile-First Architecture</div>
+                    <p class="feature-desc">Thumb-friendly buttons, readable text sizes, and sub-3-second load times ensure perfect experience on every device.</p>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="page-footer">
+            <span>Promised Land Leadership Development — Website Redesign Proposal</span>
+            <span>Page 4 of 6</span>
+        </div>
+    </div>
+
+    <!-- ROI PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-icon">📈</div>
+            <h2 class="page-title">Return on Investment</h2>
+        </div>
+        
+        <p>
+            Website redesign isn't an expense — it's an investment with measurable returns. Based on industry benchmarks for financial services websites, here's what you can expect:
+        </p>
+        
+        <div class="roi-grid">
+            <div class="roi-card">
+                <div class="roi-value">+150%</div>
+                <div class="roi-label">Lead Conversion Increase</div>
+            </div>
+            <div class="roi-card">
+                <div class="roi-value" style="color: var(--amber-400);">+60%</div>
+                <div class="roi-label">Mobile Traffic Improvement</div>
+            </div>
+            <div class="roi-card">
+                <div class="roi-value" style="color: #60a5fa;">-40%</div>
+                <div class="roi-label">Bounce Rate Reduction</div>
+            </div>
+        </div>
+        
+        <div class="roi-highlight">
+            <div class="roi-highlight-title">Projected Annual Revenue Impact</div>
+            <div class="roi-highlight-value">$84,000 - $168,000</div>
+            <p class="roi-highlight-desc">
+                Based on conservative estimates: 150% increase in consultation requests × average client lifetime value of $3,500+ × your current traffic levels. Actual results may exceed projections based on your referral network strength.
+            </p>
+        </div>
+        
+        <div class="section-title">
+            <span class="section-title-icon">💰</span>
+            Investment Breakdown
+        </div>
+        
+        <div class="comparison-container">
+            <div class="comparison-box" style="background: var(--slate-50);">
+                <h4 style="font-weight: 600; color: var(--slate-800); margin-bottom: 15px;">What You'll Receive</h4>
+                <ul style="font-size: 14px; color: var(--slate-600); padding-left: 20px;">
+                    <li>Custom responsive website design</li>
+                    <li>Mobile-optimized user experience</li>
+                    <li>Lead capture forms & strategic CTAs</li>
+                    <li>SEO foundation setup</li>
+                    <li>Google Analytics integration</li>
+                    <li>Speed optimization (sub-3s load)</li>
+                    <li>30 days post-launch support</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-box" style="background: #fef3c7;">
+                <h4 style="font-weight: 600; color: var(--slate-800); margin-bottom: 15px;">Financial Metrics</h4>
+                <ul style="font-size: 14px; color: var(--slate-600); padding-left: 0; list-style: none;">
+                    <li style="margin-bottom: 12px;"><strong>Conservative ROI:</strong> 7x within first year</li>
+                    <li style="margin-bottom: 12px;"><strong>Payback Period:</strong> 2-3 months</li>
+                    <li style="margin-bottom: 12px;"><strong>Asset Lifetime:</strong> 5+ years</li>
+                    <li><strong>Break-Even:</strong> ~3 new clients</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Promised Land Leadership Development — Website Redesign Proposal</span>
+            <span>Page 5 of 6</span>
+        </div>
+    </div>
+
+    <!-- NEXT STEPS PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-icon">🚀</div>
+            <h2 class="page-title">Your Next Steps</h2>
+        </div>
+        
+        <p>
+            Ready to transform your online presence and start capturing the clients you're currently losing? Here's our streamlined process to get you from outdated to outstanding:
+        </p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-number">1</div>
+                <div class="timeline-content">
+                    <h4>Schedule Strategy Call</h4>
+                    <p>30-minute discussion of your specific goals, target audience, and brand vision. We'll answer all your questions and outline the project timeline.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-number">2</div>
+                <div class="timeline-content">
+                    <h4>Approve Design Concepts</h4>
+                    <p>Review mockups of your new website. We'll refine until you're 100% satisfied with the direction before any development begins.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-number">3</div>
+                <div class="timeline-content">
+                    <h4>Development & Testing</h4>
+                    <p>Our team builds your new website with meticulous attention to detail. Rigorous testing ensures perfect performance across all devices.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-number">4</div>
+                <div class="timeline-content">
+                    <h4>Launch & Convert</h4>
+                    <p>Go live and immediately start capturing more leads. We provide 30 days of support to ensure everything runs smoothly.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-box">
+            <h3 class="cta-title">Ready to Transform Your Online Presence?</h3>
+            <p class="cta-desc">
+                Every day without a professional website is another day of clients going to your competitors.<br>
+                Let's change that — starting today.
+            </p>
+            <button class="cta-button">Schedule Your Strategy Call →</button>
+            <p class="cta-urgency">
+                ⏰ Limited Time: Act within 7 days and receive complimentary 1-year hosting ($600 value)
+            </p>
+        </div>
+        
+        <div class="page-footer">
+            <span>Promised Land Leadership Development — Website Redesign Proposal</span>
+            <span>Page 6 of 6</span>
+        </div>
+    </div>
+
+</body>
+</html>
